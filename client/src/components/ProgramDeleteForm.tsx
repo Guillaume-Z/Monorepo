@@ -1,12 +1,12 @@
 import type { ReactNode } from "react";
 import { useNavigate } from "react-router-dom";
 
-type ProgramDeleteFormProps = {
+type CategoryDeleteFormProps = {
   id: number;
   children: ReactNode;
 };
 
-function ProgramDeleteForm({ id, children }: ProgramDeleteFormProps) {
+function CategoryDeleteForm({ id, children }: CategoryDeleteFormProps) {
   const navigate = useNavigate();
 
   return (
@@ -14,11 +14,11 @@ function ProgramDeleteForm({ id, children }: ProgramDeleteFormProps) {
       onSubmit={(event) => {
         event.preventDefault();
 
-        fetch(`${import.meta.env.VITE_API_URL}/api/programs/${id}`, {
+        fetch(`${import.meta.env.VITE_API_URL}/api/categories/${id}`, {
           method: "delete",
         }).then((response) => {
           if (response.status === 204) {
-            navigate("/programs");
+            navigate("/categories");
           }
         });
       }}
@@ -28,4 +28,4 @@ function ProgramDeleteForm({ id, children }: ProgramDeleteFormProps) {
   );
 }
 
-export default ProgramDeleteForm;
+export default CategoryDeleteForm;
